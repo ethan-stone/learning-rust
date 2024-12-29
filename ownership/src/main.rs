@@ -1,22 +1,27 @@
 fn main() {
     let mut s = String::from("hello");
 
-    let length = calculate_length(&s);
+    // r1 are immutable references to s
 
-    println!("The length of {s} is {length}");
+    let r1 = &s;
 
-    let r1 = &mut s;
-    let r2 = &mut s;
+    let r2 = &s;
 
-    println!("{}, {}", r1, r2);
+    println!("{r1} and {r2}");
 
-    change(&mut s);
-}
+    // r3 is a mutable reference to s
+    let r3 = &mut s;
 
-fn calculate_length(s: &String) -> usize {
-    return s.len();
-}
+    println!("{r3}");
 
-fn change(s: &mut String) {
-    s.push_str(", world!");
+    // This program is okay because r1 or r2 aren't used after line 10
+    // If we tried to add the line below, the program wouldn't compile because we are using an immutable reference and a mutable references at the same time,
+    // println!("{r2}")
+    // We can't do that because the immutable reference is expecting the data to not change, but we're changing it with the mutable reference just before.
+
+    // We can create new immutable reference after the mutation though.
+
+    let r4 = &s;
+
+    println!("{r4}")
 }
