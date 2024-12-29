@@ -5,6 +5,11 @@ fn main() {
 
     println!("The length of {s} is {length}");
 
+    let r1 = &mut s;
+    let r2 = &mut s;
+
+    println!("{}, {}", r1, r2);
+
     change(&mut s);
 }
 
