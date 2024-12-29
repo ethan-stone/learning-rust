@@ -23,5 +23,30 @@ fn main() {
 
     let r4 = &s;
 
-    println!("{r4}")
+    println!("{r4}");
+
+    slicing();
+}
+
+fn slicing() {
+    let mut s = String::from("hello world");
+
+    let word = first_word(&s);
+
+    // this sets word to an empty string
+    s.clear();
+
+    // this means that the first word being at index five isn't true anymore
+}
+
+fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return i;
+        }
+    }
+
+    return s.len();
 }
