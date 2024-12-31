@@ -4,7 +4,10 @@ fn main() {
         String::from("someusername"),
     );
 
-    user1.email = String::from("someusername@example.com");
+    let mut user2 = User {
+        email: String::from("anotheruser@email.com"),
+        ..user1
+    };
 }
 
 struct User {
