@@ -1,10 +1,10 @@
 fn main() {
-    let user1 = User {
-        active: true,
-        username: String::from("someusername"),
-        email: String::from("someusername@email.com"),
-        sign_in_count: 4,
-    };
+    let mut user1 = build_user(
+        String::from("someusername@email.com"),
+        String::from("someusername"),
+    );
+
+    user1.email = String::from("someusername@example.com");
 }
 
 struct User {
@@ -12,4 +12,13 @@ struct User {
     username: String,
     email: String,
     sign_in_count: u64,
+}
+
+fn build_user(email: String, username: String) -> User {
+    return User {
+        email,
+        username,
+        active: true,
+        sign_in_count: 1,
+    };
 }
