@@ -10,14 +10,12 @@ fn vectors() {
     v.push(7);
     v.push(8);
 
-    let first = v.get(0);
+    // This is an immutable references
+    let first = &v[0];
 
-    match first {
-        Some(value) => {
-            println!("The first element is {value}");
-        }
-        None => {
-            println!("There is no first element")
-        }
-    }
+    // Here we mutate the array, thus borrowing a mutable references
+    v.push(6);
+
+    // so we can't use "first" here by rules of borrowing
+    println!("The first elemetn is: {first}");
 }
