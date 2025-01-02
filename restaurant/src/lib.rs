@@ -41,8 +41,10 @@ mod back_of_house {
     fn cook_order() {}
 }
 
+use back_of_house::Breakfast;
+
 pub fn eat_at_restaurant() {
-    let mut meal = back_of_house::Breakfast::summer("Rye");
+    let mut meal = Breakfast::summer("Rye");
 
     meal.toast = String::from("Wheat");
 
