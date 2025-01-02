@@ -16,6 +16,29 @@ pub mod aggregator;
 
 use aggregator::{Summary, Tweet};
 
+use std::fmt::Display;
+
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+
+impl<T: Display + PartialOrd> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest number is x = {}", self.x);
+        } else {
+            println!("The largest number is y = {}", self.y);
+        }
+    }
+}
+
 fn main() {
     let p1 = Point { x: 5, y: 10.4 };
     let p2 = Point { x: "Hello", y: 'c' };
