@@ -12,6 +12,10 @@ impl<X1, Y1> Point<X1, Y1> {
     }
 }
 
+pub mod aggregator;
+
+use aggregator::{Summary, Tweet};
+
 fn main() {
     let p1 = Point { x: 5, y: 10.4 };
     let p2 = Point { x: "Hello", y: 'c' };
@@ -19,4 +23,13 @@ fn main() {
     let p3 = p1.mixup(p2);
 
     println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
+
+    let tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    };
+
+    println!("1 new tweet: {}", tweet.summary());
 }
