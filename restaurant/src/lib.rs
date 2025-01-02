@@ -1,15 +1,4 @@
-mod front_of_house {
-    pub mod hosting {
-        pub fn add_to_waitlist() {}
-        fn seat_at_table() {}
-    }
-
-    mod serving {
-        fn take_order() {}
-        fn server_order() {}
-        fn take_payment() {}
-    }
-}
+mod front_of_house;
 
 fn deliver_order() {}
 
@@ -42,6 +31,7 @@ mod back_of_house {
 }
 
 use back_of_house::Breakfast;
+use front_of_house::hosting;
 
 pub fn eat_at_restaurant() {
     let mut meal = Breakfast::summer("Rye");
@@ -56,4 +46,6 @@ pub fn eat_at_restaurant() {
     // all values of an enum are public if the enum is public
     let order1 = back_of_house::Appetizer::Soup;
     let order2 = back_of_house::Appetizer::Salad;
+
+    hosting::add_to_waitlist();
 }
