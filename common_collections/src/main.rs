@@ -10,7 +10,14 @@ fn vectors() {
     v.push(7);
     v.push(8);
 
-    let first = &v[0];
+    let first = v.get(0);
 
-    println!("First element is {first}");
+    match first {
+        Some(value) => {
+            println!("The first element is {value}");
+        }
+        None => {
+            println!("There is no first element")
+        }
+    }
 }
