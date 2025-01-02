@@ -33,12 +33,14 @@ fn strings() {
 use std::collections::HashMap;
 
 fn hash_maps() {
-    let mut scores = HashMap::new();
+    let text = String::from("Hello, world. My beautiful world.");
 
-    scores.insert(String::from("Blue"), 10);
-    scores.insert(String::from("Yellow"), 50);
+    let mut char_map: HashMap<char, u32> = HashMap::new();
 
-    for (key, value) in &scores {
-        println!("{key}: {value}");
+    for char in text.chars() {
+        let count = char_map.entry(char).or_insert(0);
+        *count += 1;
     }
+
+    println!("{char_map:?}");
 }
