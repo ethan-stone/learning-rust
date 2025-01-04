@@ -6,7 +6,7 @@ pub struct Rectangle {
 
 impl Rectangle {
     pub fn can_hold(&self, other: &Rectangle) -> bool {
-        return self.length > other.length && self.width < other.width;
+        return self.length > other.length && self.width > other.width;
     }
 }
 
@@ -46,5 +46,11 @@ mod tests {
         };
 
         assert!(!smaller.can_hold(&larger));
+    }
+
+    #[test]
+    fn it_adds_two() {
+        let result = add_two(2);
+        assert_eq!(result, 4);
     }
 }
