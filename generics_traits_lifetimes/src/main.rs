@@ -3,12 +3,11 @@ fn main() {
 
     // This works
     {
-        let string2 = "xyz";
+        let string2 = String::from("xyz");
 
-        let result = longest(string1.as_str(), string2);
-
+        let result = longest(string1.as_str(), string2.as_str());
         println!("The longest string is {result}");
-    }
+    };
 }
 
 /**
