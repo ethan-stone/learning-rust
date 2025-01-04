@@ -1,13 +1,21 @@
 fn main() {
     let string1 = String::from("abcd");
+    let result;
 
-    // This works
+    /*
+     * This does not work.
+     * The reason is because the longest function using lifetime generics.
+     * So when we call this function, the lifetime that is chosen for 'a that is in the signature for longest is the shorter
+     * of string1 and string2. That means the lifetime of the returned reference will only live for as long as string2,
+     * which is the inner scope.
+     */
     {
         let string2 = String::from("xyz");
 
-        let result = longest(string1.as_str(), string2.as_str());
-        println!("The longest string is {result}");
+        result = longest(string1.as_str(), string2.as_str());
     };
+
+    println!("The longest string is {result}");
 }
 
 /**
