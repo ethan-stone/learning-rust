@@ -16,6 +16,8 @@ fn main() {
         "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
     );
+
+    iterators();
 }
 
 #[derive(Debug, PartialEq, Copy, Clone)]
@@ -54,4 +56,11 @@ impl Inventory {
             ShirtColor::Blue
         }
     }
+}
+
+fn iterators() {
+    let v1: Vec<i32> = vec![1, 2, 4];
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+
+    assert_eq!(v2, vec![2, 3, 5]);
 }
