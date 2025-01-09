@@ -1,4 +1,5 @@
-use std::ops::Deref;
+use std::mem::drop;
+use std::ops::{Deref, Drop};
 
 struct MyBox<T>(T);
 
@@ -16,9 +17,31 @@ impl<T> Deref for MyBox<T> {
     }
 }
 
+struct CustomSmartPoint {
+    data: String,
+}
+
+impl Drop for CustomSmartPoint {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
+    }
+}
+
 fn main() {
     let m = MyBox::new(String::from("Rust"));
     hello(&m);
+
+    let c = CustomSmartPoint {
+        data: String::from("my stuff"),
+    };
+
+    let d = CustomSmartPoint {
+        data: String::from("other stuff"),
+    };
+
+    drop(c);
+
+    println!("CustomSmartPointers created.");
 }
 
 fn hello(name: &str) {
